@@ -1,0 +1,2 @@
+# Fullstack-app
+I am making a website, python - flask as backend, the database I am using, is mariaDB.

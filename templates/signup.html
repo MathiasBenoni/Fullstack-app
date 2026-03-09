@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <header>
-        <a href="/" class="site-title">Coach log</a>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/login" class="nav-login">Log In</a>
-        </nav>
-    </header>
-
-    <main>
+{% block content %}
         <div class="card">
             <h1>Sign Up</h1>
             <form action="/signed_up" method="post">
@@ -32,7 +16,4 @@
             </form>
             <a href="/" class="back-link">Back</a>
         </div>
-    </main>
-
-</body>
-</html>
+{% endblock %}

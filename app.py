@@ -10,7 +10,7 @@ def index():
 
 @app.route("/submit", methods=["POST"])
 def test():
-
+    
     username = request.form.get("username")
     password = request.form.get("password")
     print(username, password)

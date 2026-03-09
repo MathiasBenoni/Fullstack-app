@@ -8,15 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <form action="/submit" method="post">
+    Sign up
+    <form action="/logged_in" method="post">
         <label for="username">Username:</label>
         <br>
-        <input type="text" id="username" name="username">
+        <input type="text" class="username" name="new_username">
         <br>
         <label for="password">Password:</label>
         <br>
-        <input type="password" id="password" name="password">
+        <input type="password" id="new_password" name="password">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    Already have an account, log in:
+    <form action="/logged_in" method="post">
+        <label for="username">Username:</label>
+        <br>
+        <input type="text" class="username" name="username">
+        <br>
+        <label for="password">Password:</label>
+        <br>
+        <input type="password" class="password" name="password">
         <br>
         <button type="submit">Submit</button>
     </form>

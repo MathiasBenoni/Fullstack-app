@@ -30,11 +30,7 @@ def database(query, params=None):
 
 def get_password(login):
     result = database("SELECT password FROM users WHERE username = %s", (login,))
-    print(result)
+
 
 def insert_database(user, hashed_pass, privileges):
     database("INSERT INTO users (username, password, privileges) VALUES (%s, %s, %s)", (user, hashed_pass, privileges))
-
-
-get_password("Mathias")
-insert_database("William", "Hashed_pass", "COACH")

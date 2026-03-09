@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up</title>
 </head>
 <body>
-    
-    Sign up
-    <form action="/signed_up" method="post">
-        <label for="username">Username:</label>
-        <br>
-        <input type="text" class="username" name="new_username">
-        <br>
-        <label for="password">Password:</label>
-        <br>
-        <input type="password" id="password" name="new_password">
-        <br>
-        <button type="submit">Submit</button>
-    </form>
 
+    <header>
+        <a href="/" class="site-title">Coach log</a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/login" class="nav-login">Log In</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="card">
+            <h1>Sign Up</h1>
+            <form action="/signed_up" method="post">
+                <div class="field">
+                    <label for="new_username">Username</label>
+                    <input type="text" id="new_username" name="new_username">
+                </div>
+                <div class="field">
+                    <label for="new_password">Password</label>
+                    <input type="password" id="new_password" name="new_password">
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <a href="/" class="back-link">Back</a>
+        </div>
+    </main>
 
 </body>
 </html>

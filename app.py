@@ -23,14 +23,18 @@ def logged_in():
     username = request.form.get("username")
     password = request.form.get("password")
 
+
+    return render_template("index.html")
+
+
+@app.route("/signed_up", methods=["POST"])
+def signed_up():
+    username = request.form.get("new_username")
+    password = request.form.get("new_password")
+
     prep_database(username, password.encode(), "NONE")
 
-    return f"Welcome, {username}!"
-
-@app.route("/signed_in")
-def signed_in():
-    pass
-
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

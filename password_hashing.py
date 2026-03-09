@@ -10,4 +10,5 @@ def prep_database(user, password, privileges):
     hashed_password = hash_password(password)
     insert_database(user, hashed_password, privileges)
 
-prep_database("test", b"123", "NONE")
+def test_password(user, password):
+    pass

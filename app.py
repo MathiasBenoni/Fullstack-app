@@ -9,8 +9,16 @@ def index():
     
     return render_template("index.html")
 
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
 @app.route("/logged_in", methods=["POST"])
-def test():
+def logged_in():
 
     username = request.form.get("username")
     password = request.form.get("password")
@@ -18,6 +26,11 @@ def test():
     prep_database(username, password.encode(), "NONE")
 
     return f"Welcome, {username}!"
+
+@app.route("/signed_in")
+def signed_in():
+    pass
+
 
 if __name__ == "__main__":
     app.run(debug=True)

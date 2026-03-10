@@ -10,5 +10,11 @@ def prep_database(user, password, privileges):
     hashed_password = hash_password(password)
     insert_database(user, hashed_password, privileges)
 
-def test_password(user, password):
-    pass
+def test_password(username, password):
+    result = database("SELECT password FROM users WHERE username = %s", (username,))
+    
+    if not result:
+        return False
+    
+    stored_hash = result[0][0].encode()
+    return bcrypt.checkpw(password, stored_hash)

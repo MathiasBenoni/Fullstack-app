@@ -13,14 +13,28 @@
             <input type="password" id="password" name="password">
         </div>
         <button type="submit">Log In</button>
-
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </form>
+
+    <div id="g_id_onload"
+         data-client_id="303838859659-1aa84a95l3jibim48c7c918q5aq573cj.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+
     <a href="/" class="back-link">Back</a>
-    
 </div>
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="303838859659-1aa84a95l3jibim48c7c918q5aq573cj.apps.googleusercontent.com.apps.googleusercontent.com">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+function handleCredentialResponse(response) {
+    fetch("/google_login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: response.credential })
+    }).then(res => res.json()).then(data => {
+        if (data.success) window.location.href = "/";
+    });
+}
+</script>
 
 {% endblock %}

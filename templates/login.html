@@ -13,7 +13,14 @@
             <input type="password" id="password" name="password">
         </div>
         <button type="submit">Log In</button>
+
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </form>
     <a href="/" class="back-link">Back</a>
+    
 </div>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="303838859659-1aa84a95l3jibim48c7c918q5aq573cj.apps.googleusercontent.com.apps.googleusercontent.com">
+
 {% endblock %}

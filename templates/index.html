@@ -2,7 +2,32 @@
 
 {% block content %}
 
+<div class="card">
+    <h1>Manage Users</h1>
 
+    <div class="btn-group">
+        <a href="/manage_coaches"><button>Manage Coaches</button></a>
+        <a href="/manage_members"><button>Manage Members</button></a>
+        <a href="/manage_people"><button>Manage People</button></a>
 
+    
+</div>
+
+        <h1>Approve Coaching</h1>
+
+        <div class="btn-group">
+            <a href="approve"><button>Approve</button></a>
+        </div>
+    </div>
+
+    
+    <div class="card">
+    <h1>Register coaching</h1>
+    <div class="field">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date">
+    </div>
+    <a href="/submit"><button>Submit</button></a>
+</div>
 
 {% endblock %}

@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<div class="admin">
 <div class="card">
     <h1>Manage Users</h1>
     <div class="btn-group">
@@ -15,6 +16,10 @@
     </div>
 </div>
 
+</div>
+
+<div class="coach">
+
 <div class="card">
     <h1>Register Coaching</h1>
     <form action="/submit" method="post">
@@ -25,5 +30,9 @@
         <button type="submit">Submit</button>
     </form>
 </div>
+
+</div>
+
+<h1>{{ test }}</h1>
 
 {% endblock %}

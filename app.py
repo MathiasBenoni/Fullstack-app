@@ -11,7 +11,11 @@ app.secret_key = "NOPE"
 @app.route("/")
 def index():
     
-    return render_template("index.html")
+    test = database("SELECT id, username, privileges FROM users;")
+    
+
+
+    return render_template("index.html", test=test)
 
 @app.route("/google_login", methods=["POST"])
 def google_login():

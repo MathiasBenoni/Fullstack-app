@@ -1,5 +1,3 @@
-from os import error
-
 from flask import *
 from database_python import *
 from password_hashing import prep_database

@@ -1,3 +1,5 @@
+from os import error
+
 from flask import *
 from database_python import *
 from password_hashing import prep_database
@@ -68,6 +70,21 @@ def logout():
     session.clear()
     return redirect(url_for("index"))
 
+@app.route("/submit", methods=["POST"])
+def submit():
+
+    username = session.get("username")
+    date = request.form.get("date")
+    if not date:
+        return render_template("index.html")
+    else:
+        print(date)
+        print(username)
+
+        insert_choaching_database(username, date)
+
+        return redirect(url_for("index"))
+        
 
 
 if __name__ == "__main__":

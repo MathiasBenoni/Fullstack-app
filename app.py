@@ -41,13 +41,13 @@ from password_hashing import prep_database, test_password
 
 @app.route("/logged_in", methods=["POST"])
 def logged_in():
-    username = request.form.get("username")
+    email = request.form.get("email")
     password = request.form.get("password")
     password = password.encode()
 
-    if test_password(username, password):
-        result = database("SELECT privileges FROM users WHERE username = %s", (username,))
-        session["username"] = username
+    if test_password(email, password):
+        result = database("SELECT privileges FROM users WHERE username = %s", (email,))
+        session["username"] = email
         session["privileges"] = result[0][0]
         return redirect(url_for("index"))
     else:
@@ -56,7 +56,7 @@ def logged_in():
 
 @app.route("/signed_up", methods=["POST"])
 def signed_up():
-    username = request.form.get("new_username")
+    username = request.form.get("new_email")
     password = request.form.get("new_password")
 
     prep_database(username, password.encode(), "NONE")
@@ -71,15 +71,15 @@ def logout():
 @app.route("/submit", methods=["POST"])
 def submit():
 
-    username = session.get("username")
+    email = session.get("username")
     date = request.form.get("date")
     if not date:
         return render_template("index.html")
     else:
         print(date)
-        print(username)
+        print(email)
 
-        insert_choaching_database(username, date)
+        insert_choaching_database(email, date)
 
         return redirect(url_for("index"))
         
@@ -90,11 +90,34 @@ def send_to_approve():
 
 @app.route("/approved", methods=["POST"])
 def approved():
-    username = request.form.get("username")
+    email = request.form.get("email")
     date = request.form.get("date")
     
-    database("DELETE FROM coaching WHERE username = %s AND date = %s", (username, date))
+    database("DELETE FROM coaching WHERE username = %s AND date = %s", (email, date))
     return render_template("index.html")
+
+@app.route("/manage_people")
+def manage():
+    rows = database("SELECT username, privileges FROM users")
+
+
+
+    return render_template("manage_people.html", rows=rows)
+
+
+
+@app.route("/update_privileges", methods=["POST"])
+def update_privileges():
+    username = request.form.get("username")
+    privileges = request.form.get("privileges")
+
+    database(
+        "UPDATE users SET privileges = %s WHERE username = %s",
+        (privileges, username)
+    )
+
+    return redirect(url_for("manage"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -12,7 +12,7 @@
         <a href="/" class="site-title">Coach log</a>
         <nav>
             <a href="/">Home</a>
-            {% if session.get("username") %}
+            {% if session.get("email") %}
                 <a href="/logout">Log Out</a>
             {% else %}
                 <a href="/signup">Sign Up</a>

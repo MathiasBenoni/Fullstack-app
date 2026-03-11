@@ -10,8 +10,8 @@ def prep_database(user, password, privileges):
     hashed_password = hash_password(password)
     insert_user_database(user, hashed_password, privileges)
 
-def test_password(username, password):
-    result = database("SELECT password FROM users WHERE username = %s", (username,))
+def test_password(email, password):
+    result = database("SELECT password FROM users WHERE username = %s", (email,))
     
     if not result:
         return False

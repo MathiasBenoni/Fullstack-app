@@ -20,6 +20,12 @@ Run this command
 pip install flask
 ```
 
+## Install Bcrypt (for hashing passwords)
+
+```
+pip install bcrypt
+```
+
 ## Install mariaDB
 
 ```

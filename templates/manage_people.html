@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for row in rows %}
+
+<div class="card">
+    <form action="/update_privileges" method="post">
+        <div class="field">
+            <h1>{{ row[0] }}</h1>
+
+            <label>
+                <input type="radio" name="privileges" value="ADMIN"
+                {% if row[1] == "ADMIN" %}checked{% endif %}>
+                Admin
+            </label>
+
+            <label>
+                <input type="radio" name="privileges" value="COACH"
+                {% if row[1] == "COACH" %}checked{% endif %}>
+                Coach
+            </label>
+
+            <label>
+                <input type="radio" name="privileges" value="NONE"
+                {% if row[1] == "NONE" %}checked{% endif %}>
+                None
+            </label>
+        </div>
+
+        <input type="hidden" name="username" value="{{ row[0] }}">
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -85,7 +85,18 @@ def submit():
 
         return redirect(url_for("index"))
         
+@app.route("/approve")
+def send_to_approve():
+    rows = database("SELECT username, date FROM coaching")
+    return render_template("approve.html", rows=rows)
 
+@app.route("/approved", methods=["POST"])
+def approved():
+    username = request.form.get("username")
+    date = request.form.get("date")
+    
+    database("DELETE FROM coaching WHERE username = %s AND date = %s", (username, date))
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

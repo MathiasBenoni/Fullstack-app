@@ -36,5 +36,5 @@ def insert_user_database(user, hashed_pass, privileges):
     database("INSERT INTO users (username, password, privileges) VALUES (%s, %s, %s)", (user, hashed_pass, privileges))
 
 def insert_choaching_database(username, date):
-    database("INSERT INTO choaching (username, date) VALUES (%s, %s)", (username, date))
+    database("INSERT INTO coaching (username, date) VALUES (%s, %s)", (username, date))
     pass
